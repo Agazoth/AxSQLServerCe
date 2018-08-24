@@ -12,7 +12,7 @@
 RootModule = 'AxSQLServerCe.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.1'
+ModuleVersion = '1.0.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -116,7 +116,7 @@ PrivateData = @{
 } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
-# HelpInfoURI = ''
+  HelpInfoURI = 'https://github.com/Agazoth/AxSQLServerCe/blob/master/en-US/AxSQLServerCe-help.xml'
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
 # DefaultCommandPrefix = ''
