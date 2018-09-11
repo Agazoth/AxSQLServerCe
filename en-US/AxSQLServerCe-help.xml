@@ -27,6 +27,30 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>MaxDBSize</maml:name>
+          <maml:Description>
+            <maml:para>Max database size can be set. Initial value is set to 4091 which is max size</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>TimeOut</maml:name>
+          <maml:Description>
+            <maml:para>Timeout can be set. Set to 10 default</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
@@ -38,6 +62,30 @@
         <command:parameterValue required="true" variableLength="false">FileInfo</command:parameterValue>
         <dev:type>
           <maml:name>FileInfo</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>MaxDBSize</maml:name>
+        <maml:Description>
+          <maml:para>Max database size can be set. Initial value is set to 4091 which is max size</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>TimeOut</maml:name>
+        <maml:Description>
+          <maml:para>Timeout can be set. Set to 10 default</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -94,10 +142,37 @@
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Invoke-SdfCmd</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>TQuery</maml:name>
+          <maml:Description>
+            <maml:para>Any TSQL query that is allowed in SQL Server CE</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Invoke-SdfCmd</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>ReplaceVariables</maml:name>
+          <maml:Description>
+            <maml:para>A string collection for updating a saved query. Format string is used in the function, thus elements 0,1,2,3 ... are replaced with the equivalent {0}, {1}, {2} in the saved Query according to the string replace rules.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Query</maml:name>
           <maml:Description>
-            <maml:para>A T-SQL query to execute against your SQL Server CE Database</maml:para>
+            <maml:para>Saved TSQL queries. Autocomplete is enabled on saved Queries. Additional saved queries can be added by running Set-SavedQuery</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -109,10 +184,34 @@
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>TQuery</maml:name>
+        <maml:Description>
+          <maml:para>Any TSQL query that is allowed in SQL Server CE</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>ReplaceVariables</maml:name>
+        <maml:Description>
+          <maml:para>A string collection for updating a saved query. Format string is used in the function, thus elements 0,1,2,3 ... are replaced with the equivalent {0}, {1}, {2} in the saved Query according to the string replace rules.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Query</maml:name>
         <maml:Description>
-          <maml:para>A T-SQL query to execute against your SQL Server CE Database</maml:para>
+          <maml:para>Saved TSQL queries. Autocomplete is enabled on saved Queries. Additional saved queries can be added by running Set-SavedQuery</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -151,24 +250,24 @@
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Connect-SdfFile c:\Temp\MyDatabase.sdf
-PS C:\&gt; Invoke-SdfCmd -Query "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'TABLE'"</dev:code>
+PS C:\&gt; Invoke-SdfCmd -TQuery "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'TABLE'"</dev:code>
         <dev:remarks>
           <maml:para>Lists all tables in the MyDatabase SQL Server CE database</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Invoke-SdfCmd -Query "CREATE TABLE [MyTable] ([Id] int NOT NULL  IDENTITY (1,1), [Name] nvarchar(450) NOT NULL);"
-PS C:\&gt; Invoke-SdfCmd -Query "ALTER TABLE [Files] ADD CONSTRAINT [PK_Files] PRIMARY KEY ([Id]);"
-PS C:\&gt; Invoke-SdfCmd -Query "ALTER TABLE [MyTable] ADD CONSTRAINT [PK_MyTable] PRIMARY KEY ([Id]);"
-PS C:\&gt; Invoke-SdfCmd -Query "CREATE UNIQUE INDEX [IX_MyTable_Name] ON [MyTable] ([Name] ASC);"</dev:code>
+        <dev:code>PS C:\&gt; Invoke-SdfCmd -TQuery "CREATE TABLE [MyTable] ([Id] int NOT NULL  IDENTITY (1,1), [Name] nvarchar(450) NOT NULL);"
+PS C:\&gt; Invoke-SdfCmd -TQuery "ALTER TABLE [MyTable] ADD CONSTRAINT [PK_MyTable] PRIMARY KEY ([Id]);"
+PS C:\&gt; Invoke-SdfCmd -TQuery "ALTER TABLE [MyTable] ADD CONSTRAINT [PK_MyTable] PRIMARY KEY ([Id]);"
+PS C:\&gt; Invoke-SdfCmd -TQuery "CREATE UNIQUE INDEX [IX_MyTable_Name] ON [MyTable] ([Name] ASC);"</dev:code>
         <dev:remarks>
           <maml:para>Creates a new table in the databse currently bound by Connect-SdfFile</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 3 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Invoke-SdfCmd -Query "SELECT * from MyTable"</dev:code>
+        <dev:code>PS C:\&gt; Invoke-SdfCmd -TQuery "SELECT * from MyTable"</dev:code>
         <dev:remarks>
           <maml:para>Retrieves all lines in MyTable</maml:para>
         </dev:remarks>
@@ -206,7 +305,7 @@ PS C:\&gt; Invoke-SdfCmd -Query "CREATE UNIQUE INDEX [IX_MyTable_Name] ON [MyTab
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Connect</maml:name>
           <maml:Description>
-            <maml:para>{{Fill Connect Description}}</maml:para>
+            <maml:para>Connects to the database just created</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -231,7 +330,7 @@ PS C:\&gt; Invoke-SdfCmd -Query "CREATE UNIQUE INDEX [IX_MyTable_Name] ON [MyTab
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Connect</maml:name>
         <maml:Description>
-          <maml:para>{{Fill Connect Description}}</maml:para>
+          <maml:para>Connects to the database just created</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -296,6 +395,163 @@ PS C:\&gt; Invoke-SdfCmd -Query "CREATE UNIQUE INDEX [IX_MyTable_Name] ON [MyTab
         <dev:code>PS C:\&gt; New-SdfFile -Path C:\Temp\MyDatabase.sdf</dev:code>
         <dev:remarks>
           <maml:para>Creates a new SQL Server CE file in C:\Temp called MyDatabase.sdf. Use Connect-SdfFile fo</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Set-SavedQuery</command:name>
+      <command:verb>Set</command:verb>
+      <command:noun>SavedQuery</command:noun>
+      <maml:description>
+        <maml:para>Adds a saved TSQL query to the module. If this module is installed in a global module path, it requires administrator privileges to update queries or the saved queries path. If the module is installed in the current users module path, current access rights suffice.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Adds a saved TSQL query to the module. Use '\' to separate to different subfolders</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Set-SavedQuery</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Query</maml:name>
+          <maml:Description>
+            <maml:para>The query string to save. A string array with complex TSQL queries can be added.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:Description>
+            <maml:para>If set, Force overwrites existing saved queries</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>QueryName</maml:name>
+          <maml:Description>
+            <maml:para>The Name of your query.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>UpdateQueryPath</maml:name>
+          <maml:Description>
+            <maml:para>Changes the path of saved SQL queries. When changed, existing uery files are copied to the new location.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">DirectoryInfo</command:parameterValue>
+          <dev:type>
+            <maml:name>DirectoryInfo</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>Query</maml:name>
+        <maml:Description>
+          <maml:para>The query string to save. A string array with complex TSQL queries can be added.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Force</maml:name>
+        <maml:Description>
+          <maml:para>If set, Force overwrites existing saved queries</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>QueryName</maml:name>
+        <maml:Description>
+          <maml:para>The Name of your query.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>UpdateQueryPath</maml:name>
+        <maml:Description>
+          <maml:para>Changes the path of saved SQL queries. When changed, existing uery files are copied to the new location.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">DirectoryInfo</command:parameterValue>
+        <dev:type>
+          <maml:name>DirectoryInfo</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Set-SavedQuery -QueryName "GetAllLinesFromMyTable" -Query "Select * from MyTable"</dev:code>
+        <dev:remarks>
+          <maml:para>This command saves the query "Select * from MyTable" in your module and can be retrieved in the Invoke-SdfCmd inidiately</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Set-SavedQuery -UpdateQueryPath C:\Temp\SQL</dev:code>
+        <dev:remarks>
+          <maml:para>This command updates the path for saved queries to C:\Temp\SQL. If there are subfolders with queries, they are moved to the same subfolders in the target directory.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>

@@ -1,0 +1,5 @@
+11-09-2018: 
+    - Re-written to single psm1 file
+    - Added support for ssaved queries
+    - Autocompletion on saved queries
+    - Added updated binaries removing the need for installing MS SQL Server CE
