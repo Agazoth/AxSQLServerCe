@@ -3,3 +3,5 @@
     - Added support for ssaved queries
     - Autocompletion on saved queries
     - Added updated binaries removing the need for installing MS SQL Server CE
+    - Saved queries path can be changed
+    - Large sdf files are now supported
