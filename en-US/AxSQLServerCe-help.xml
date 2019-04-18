@@ -51,6 +51,29 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>SecurePassword</maml:name>
+          <maml:Description>
+            <maml:para>This switch is used for prompting for a password to use when connecting to the sdf file.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>UnsecurePassword</maml:name>
+          <maml:Description>
+            <maml:para>If you don't care about security otr you want to run this automated, use this option to pass a password for the sdf connection</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
@@ -90,6 +113,30 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>SecurePassword</maml:name>
+        <maml:Description>
+          <maml:para>This switch is used for prompting for a password to use when connecting to the sdf file.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>UnsecurePassword</maml:name>
+        <maml:Description>
+          <maml:para>If you don't care about security otr you want to run this automated, use this option to pass a password for the sdf connection</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
@@ -122,6 +169,13 @@
         <dev:code>PS C:\&gt; Connect-SdfFile -Path C:\Temp\MyDatabase.sdf</dev:code>
         <dev:remarks>
           <maml:para>Establishes a connection to MyDatabase. The connection persists until the console is closed or a new connection is established.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Connect-SdfFile -Path C:\Temp\MyDatabase.sdf -SecurePassword</dev:code>
+        <dev:remarks>
+          <maml:para>Type your password: * * **</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
